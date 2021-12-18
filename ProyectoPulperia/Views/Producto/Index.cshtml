@@ -7,60 +7,32 @@
 
 <h2>Index</h2>
 
-    @if (User.IsInRole("admin")) 
-    { 
-        <p>
-             @Html.ActionLink("Create New", "Create")
-        </p>
-    }
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NOMBREPRODUCTO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PRECIOPRODUCTO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Categoria.NOMBRECATEGORIA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Marca.NOMBREMARCA)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.NOMBREPRODUCTO)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PRECIOPRODUCTO)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Categoria.NOMBRECATEGORIA)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Marca.NOMBREMARCA)
-    </td>
-    @if (User.IsInRole("admin"))
-    {
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.IDPRODUCTO }) |
-            @Html.ActionLink("Details", "Details", new { id = item.IDPRODUCTO }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IDPRODUCTO })
-        </td>
-    }
-    @if (User.IsInRole("cliente"))
-                {
-<td>
-    @Html.ActionLink(linkText: "Agregar", actionName: "Create", controllerName: "Carrito", routeValues: new { id = item.IDPRODUCTO, iduser = User.Identity.Name }, htmlAttributes: null)
-</td>
-                }
-</tr>
+@if (User.IsInRole("admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 }
 
-</table>
+<div class="row row-cols-1 row-cols-md-3" style="padding-top:2em;">
+    @foreach (var item in Model)
+    {
+        <div class="col-4" style="padding-top:2em;">
+            <div class="card text-center mx-auto text-white" style="width:20rem; background-color:#8fbc8f; border-radius:21px!important">
+                <div class="card-body">
+                    <div class="card-title text-center">
+                        <p>@Html.DisplayFor(modelItem => item.NOMBREPRODUCTO)</p>
+                    </div>
+                    Precio: @Html.DisplayFor(modelItem => item.PRECIOPRODUCTO)
+                    <br />
+                    Categoria: @Html.DisplayFor(modelItem => item.Categoria.NOMBRECATEGORIA)
+                    <br />
+                    Marca: @Html.DisplayFor(modelItem => item.Marca.NOMBREMARCA)
+                    <br />
+                    <a href="@Url.Action("Create","Carrito", new { id = item.IDPRODUCTO})" class="btn btn-primary">Agregar al carrito</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

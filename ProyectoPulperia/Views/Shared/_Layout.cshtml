@@ -1,50 +1,68 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>@ViewBag.Title - Pulperia el Alto</title>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-
-                
-
-                @if (User.IsInRole("admin"))
-                {
-                     <ul class="nav navbar-nav">
-                       <li>@Html.ActionLink("Productos", "Index", "Producto")</li>
-                       <li>@Html.ActionLink("Usuarios", "Index", "AspNetUsers")</li>
-                        <li>@Html.ActionLink("Marcas", "Index", "Marcas")</li>
-                        <li>@Html.ActionLink("Categorias", "Index", "Categorias")</li>
-                     </ul>
-                }
-                @if (User.IsInRole("cliente"))
-                {
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Productos", "Index", "Producto")</li>
-                        <li>@Html.ActionLink("Carrito", "Index", "Carrito")</li>
-                        <li>@Html.ActionLink("Compra", "Index", "Compra")</li>
-                        <li>@Html.ActionLink("Historial", "Index", "Historial")</li>
-                        <li>    @Html.ActionLink("Detalle de la compra", "Index", "DetalleCompra")</li>
-                    </ul>
-                }
-
-                @Html.Partial("_LoginPartial")
+    <nav class="navbar navbar-expand-lg navbar-dark text-white" style="background-color:#8fbc8f;">
+        <a class="navbar-brand p-2" href="@Url.Action("Index", "Home")"><i class="fas fa-mountain p-2"></i>Pulperia el Alto</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            @if (User.IsInRole("admin"))
+            {
+                <ul class="navbar-nav">
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","Home")">Inicio</a>
+                    </li>
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","Producto")">Productos</a>
+                    </li>
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","AspNetUsers")">Usuarios</a>
+                    </li>
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","Marcas")">Marcas</a>
+                    </li>
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","Categorias")">Categorias</a>
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <ul class="navbar-nav">
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","Home")">Inicio</a>
+                    </li>
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","Producto")">Productos</a>
+                    </li>
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","Carrito")">Carrito</a>
+                    </li>
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","Compra")">Compra</a>
+                    </li>
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","Historial")">Historial</a>
+                    </li>
+                    <li class="nav-item active p-2">
+                        <a class="nav-link" href="@Url.Action("Index","DetalleCompra")">Detalle de la compra</a>
+                    </li>
+                </ul>
+            }
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
             </div>
         </div>
     </div>
@@ -55,9 +73,6 @@
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

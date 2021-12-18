@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -37,12 +38,13 @@ namespace ProyectoPulperia.Controllers
         }
 
         // GET: Carrito/Create
-        public ActionResult Create(int? id, string username)
+        public ActionResult Create(int? id)
         {
             Producto producto = db.Producto.Find(id);
-            //AspNetUsers usuario = db.AspNetUsers.Find(username);
+            String result = GetID();
+            AspNetUsers usuario = db.AspNetUsers.Find(result);
             //se necesita traer el id del usuario para que funcione, el user.identity.name trae el nombre de usuario, no el id
-            AspNetUsers usuario = db.AspNetUsers.Find("c527f6e7-4d32-45b2-8cce-c7c2621c577a");
+            //AspNetUsers usuario = db.AspNetUsers.Find("c527f6e7-4d32-45b2-8cce-c7c2621c577a");
 
 
 
@@ -138,6 +140,35 @@ namespace ProyectoPulperia.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public string GetID ()
+        {
+            String result = "";
+            String username = User.Identity.Name;
+            SqlConnection conn = new SqlConnection("Data Source=SQL5108.site4now.net;initial catalog=db_a7ddbd_pulperia;user id=db_a7ddbd_pulperia_admin;password=Pulperia01*;MultipleActiveResultSets=True");
+            try
+            {
+                conn.Open();
+                SqlCommand query = new SqlCommand("SELECT Id FROM AspNetUsers WHERE UserName=@username", conn);
+                query.Parameters.AddWithValue("@username", username);
+                using(SqlDataReader reader = query.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        result = reader["Id"].ToString();
+                    }
+                }
+            }catch(Exception err)
+            {
+                Console.WriteLine(err);
+                return err.ToString();
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
         }
     }
 }

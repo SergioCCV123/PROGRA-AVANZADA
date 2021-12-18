@@ -396,7 +396,7 @@
           <Key>
             <PropertyRef Name="IDDETALLECOMPRA" />
           </Key>
-          <Property Name="IDDETALLECOMPRA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDDETALLECOMPRA" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
           <Property Name="IDCOMPRA" Type="Int32" Nullable="false" />
           <Property Name="IDPRODUCTO" Type="Int32" Nullable="false" />
           <Property Name="CANTIDADDC" Type="Int32" Nullable="false" />
