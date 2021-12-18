@@ -5,11 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2 class="text-center">Historial de Compras</h2>
+@if (User.IsInRole("admin")) { 
+    <div class="text-center justify-content-center">
+        <a href="@Url.Action("Create","Compra")" class="btn btn-successful">Crear Nuevo</a>
+    </div>
+}
 <table class="table">
     <tr>
         <th>
@@ -36,9 +37,9 @@
             @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDCOMPRA }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDCOMPRA }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDCOMPRA })
+            <a href="@Url.Action("Edit", "Compra", new { id = item.IDCOMPRA })"><i class="fas fa-edit"></i>|</a>
+            <a href="@Url.Action("Delete", "Compra", new { id = item.IDCOMPRA})"><i class="fas fa-trash-alt"></i>|</a>
+            <a href="@Url.Action("Details", "Compra", new { id = item.IDCOMPRA })"><i class="fas fa-info-circle"></i></a>
         </td>
     </tr>
 }

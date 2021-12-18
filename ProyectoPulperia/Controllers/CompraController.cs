@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -127,6 +128,62 @@ namespace ProyectoPulperia.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public void Purchase()
+        {
+            String username = GetID();
+            SqlConnection conn = null;
+            try
+            {
+                SqlCommand query = new SqlCommand("UserPurchase");
+                query.CommandType = CommandType.StoredProcedure;
+
+                query.Parameters.AddWithValue("@USER", SqlDbType.NVarChar).Value = username;
+                conn = new SqlConnection("Data Source=SQL5108.site4now.net;initial catalog=db_a7ddbd_pulperia;user id=db_a7ddbd_pulperia_admin;password=Pulperia01*;MultipleActiveResultSets=True");
+                conn.Open();
+                query.Connection = conn;
+                query.ExecuteNonQuery();
+                
+            }catch(Exception err)
+            {
+                Console.WriteLine(err);
+            }
+            finally
+            {
+                conn.Close();
+                Index();
+            }
+        }
+
+        public string GetID()
+        {
+            String result = "";
+            String username = User.Identity.Name;
+            SqlConnection conn = new SqlConnection("Data Source=SQL5108.site4now.net;initial catalog=db_a7ddbd_pulperia;user id=db_a7ddbd_pulperia_admin;password=Pulperia01*;MultipleActiveResultSets=True");
+            try
+            {
+                conn.Open();
+                SqlCommand query = new SqlCommand("SELECT Id FROM AspNetUsers WHERE UserName=@username", conn);
+                query.Parameters.AddWithValue("@username", username);
+                using (SqlDataReader reader = query.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        result = reader["Id"].ToString();
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err);
+                return err.ToString();
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
         }
     }
 }

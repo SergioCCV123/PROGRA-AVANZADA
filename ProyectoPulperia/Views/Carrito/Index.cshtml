@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2 class="text-center justify-content-center p-5">Bienvenido a su carrito de compras!</h2>
+@if (User.IsInRole("admin")) 
+{ 
+    <a class="btn btn-success" href="@Url.Action("Create","Carrito")">Crear Nuevo</a>
+}
 <table class="table">
     <tr>
         <th>
@@ -38,9 +38,9 @@
             @Html.DisplayFor(modelItem => item.AspNetUsers.Email)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.IDCARRITO }) |
-            @Html.ActionLink("Details", "Details", new { id = item.IDCARRITO }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.IDCARRITO })
+            <a href="@Url.Action("Edit", "Carrito", new { id = item.IDCARRITO })"><i class="fas fa-edit"></i>|</a>
+            <a href="@Url.Action("Delete", "Carrito", new { id = item.IDCARRITO })"><i class="fas fa-trash-alt"></i>|</a>
+            <a href="@Url.Action("Details", "Carrito", new { id = item.IDCARRITO })"><i class="fas fa-info-circle"></i></a>
         </td>
     }
 
@@ -48,3 +48,4 @@
 }
 
 </table>
+<a href="@Url.Action("Purchase", "Compra")" class="btn btn-primary">Realizar la compra</a>

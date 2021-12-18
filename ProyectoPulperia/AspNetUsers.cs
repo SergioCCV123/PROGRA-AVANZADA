@@ -21,7 +21,6 @@ namespace ProyectoPulperia
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
             this.Carrito = new HashSet<Carrito>();
             this.Compra = new HashSet<Compra>();
-            this.Historial = new HashSet<Historial>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
         }
     
@@ -46,8 +45,6 @@ namespace ProyectoPulperia
         public virtual ICollection<Carrito> Carrito { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Historial> Historial { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
     }

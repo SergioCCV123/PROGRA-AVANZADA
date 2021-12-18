@@ -12,6 +12,8 @@ namespace ProyectoPulperia
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class db_a7ddbd_pulperiaEntities : DbContext
     {
@@ -28,8 +30,6 @@ namespace ProyectoPulperia
         public virtual DbSet<Carrito> Carrito { get; set; }
         public virtual DbSet<Categoria> Categoria { get; set; }
         public virtual DbSet<Compra> Compra { get; set; }
-        public virtual DbSet<DetalleCompra> DetalleCompra { get; set; }
-        public virtual DbSet<Historial> Historial { get; set; }
         public virtual DbSet<Marca> Marca { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
@@ -37,5 +37,32 @@ namespace ProyectoPulperia
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+    
+        public virtual int Purchase(string uSER)
+        {
+            var uSERParameter = uSER != null ?
+                new ObjectParameter("USER", uSER) :
+                new ObjectParameter("USER", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Purchase", uSERParameter);
+        }
+    
+        public virtual int PurchaseDetails(string uSER)
+        {
+            var uSERParameter = uSER != null ?
+                new ObjectParameter("USER", uSER) :
+                new ObjectParameter("USER", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseDetails", uSERParameter);
+        }
+    
+        public virtual int UserPurchase(string uSER)
+        {
+            var uSERParameter = uSER != null ?
+                new ObjectParameter("USER", uSER) :
+                new ObjectParameter("USER", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UserPurchase", uSERParameter);
+        }
     }
 }

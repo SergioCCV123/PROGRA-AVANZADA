@@ -18,7 +18,6 @@ namespace ProyectoPulperia
         public Producto()
         {
             this.Carrito = new HashSet<Carrito>();
-            this.DetalleCompra = new HashSet<DetalleCompra>();
         }
     
         public int IDPRODUCTO { get; set; }
@@ -30,8 +29,6 @@ namespace ProyectoPulperia
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Carrito> Carrito { get; set; }
         public virtual Categoria Categoria { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetalleCompra> DetalleCompra { get; set; }
         public virtual Marca Marca { get; set; }
     }
 }

@@ -29,26 +29,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DetalleCompra">
-      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.DetalleCompra">
-        <MappingFragment StoreEntitySet="DetalleCompra">
-          <ScalarProperty Name="IDDETALLECOMPRA" ColumnName="IDDETALLECOMPRA" />
-          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
-          <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
-          <ScalarProperty Name="CANTIDADDC" ColumnName="CANTIDADDC" />
-          <ScalarProperty Name="PRECIODC" ColumnName="PRECIODC" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Historial">
-      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.Historial">
-        <MappingFragment StoreEntitySet="Historial">
-          <ScalarProperty Name="IDHISTORIAL" ColumnName="IDHISTORIAL" />
-          <ScalarProperty Name="USERID" ColumnName="USERID" />
-          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Marca">
       <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.Marca">
         <MappingFragment StoreEntitySet="Marca">
@@ -131,5 +111,8 @@
         <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>
     </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="Purchase" FunctionName="db_a7ddbd_pulperiaModel.Store.Purchase" />
+    <FunctionImportMapping FunctionImportName="PurchaseDetails" FunctionName="db_a7ddbd_pulperiaModel.Store.PurchaseDetails" />
+    <FunctionImportMapping FunctionImportName="UserPurchase" FunctionName="db_a7ddbd_pulperiaModel.Store.UserPurchase" />
   </EntityContainerMapping>
 </Mapping>

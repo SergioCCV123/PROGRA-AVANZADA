@@ -86,24 +86,6 @@
     <Property Name="TOTALCOMPRA" Type="decimal" Precision="18" Scale="0" Nullable="false" />
     <Property Name="FECHACOMPRA" Type="datetime" Nullable="false" />
   </EntityType>
-  <EntityType Name="DetalleCompra">
-    <Key>
-      <PropertyRef Name="IDDETALLECOMPRA" />
-    </Key>
-    <Property Name="IDDETALLECOMPRA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IDCOMPRA" Type="int" Nullable="false" />
-    <Property Name="IDPRODUCTO" Type="int" Nullable="false" />
-    <Property Name="CANTIDADDC" Type="int" Nullable="false" />
-    <Property Name="PRECIODC" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Historial">
-    <Key>
-      <PropertyRef Name="IDHISTORIAL" />
-    </Key>
-    <Property Name="IDHISTORIAL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="USERID" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="IDCOMPRA" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Marca">
     <Key>
       <PropertyRef Name="IDMARCA" />
@@ -189,42 +171,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DETALLECOMPRA_COMPRA">
-    <End Role="Compra" Type="Self.Compra" Multiplicity="1" />
-    <End Role="DetalleCompra" Type="Self.DetalleCompra" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Compra">
-        <PropertyRef Name="IDCOMPRA" />
-      </Principal>
-      <Dependent Role="DetalleCompra">
-        <PropertyRef Name="IDCOMPRA" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DETALLECOMPRA_PRODUCTO">
-    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
-    <End Role="DetalleCompra" Type="Self.DetalleCompra" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Producto">
-        <PropertyRef Name="IDPRODUCTO" />
-      </Principal>
-      <Dependent Role="DetalleCompra">
-        <PropertyRef Name="IDPRODUCTO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_HISTORIAL_COMPRA">
-    <End Role="Compra" Type="Self.Compra" Multiplicity="1" />
-    <End Role="Historial" Type="Self.Historial" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Compra">
-        <PropertyRef Name="IDCOMPRA" />
-      </Principal>
-      <Dependent Role="Historial">
-        <PropertyRef Name="IDCOMPRA" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_PRODUCTO_CATEGORIA">
     <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
     <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
@@ -273,18 +219,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_USER_HISTORIAL">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-    <End Role="Historial" Type="Self.Historial" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Historial">
-        <PropertyRef Name="USERID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <Function Name="Purchase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USER" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="PurchaseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USER" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="UserPurchase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USER" Type="nvarchar(max)" Mode="In" />
+  </Function>
   <EntityContainer Name="db_a7ddbd_pulperiaModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -295,8 +238,6 @@
     <EntitySet Name="Carrito" EntityType="Self.Carrito" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DetalleCompra" EntityType="Self.DetalleCompra" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Historial" EntityType="Self.Historial" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CARRITO_PRODUCTO" Association="Self.FK_CARRITO_PRODUCTO">
@@ -319,18 +260,6 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
     </AssociationSet>
-    <AssociationSet Name="FK_DETALLECOMPRA_COMPRA" Association="Self.FK_DETALLECOMPRA_COMPRA">
-      <End Role="Compra" EntitySet="Compra" />
-      <End Role="DetalleCompra" EntitySet="DetalleCompra" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DETALLECOMPRA_PRODUCTO" Association="Self.FK_DETALLECOMPRA_PRODUCTO">
-      <End Role="Producto" EntitySet="Producto" />
-      <End Role="DetalleCompra" EntitySet="DetalleCompra" />
-    </AssociationSet>
-    <AssociationSet Name="FK_HISTORIAL_COMPRA" Association="Self.FK_HISTORIAL_COMPRA">
-      <End Role="Compra" EntitySet="Compra" />
-      <End Role="Historial" EntitySet="Historial" />
-    </AssociationSet>
     <AssociationSet Name="FK_PRODUCTO_CATEGORIA" Association="Self.FK_PRODUCTO_CATEGORIA">
       <End Role="Categoria" EntitySet="Categoria" />
       <End Role="Producto" EntitySet="Producto" />
@@ -346,10 +275,6 @@
     <AssociationSet Name="FK_USER_COMPRA" Association="Self.FK_USER_COMPRA">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Compra" EntitySet="Compra" />
-    </AssociationSet>
-    <AssociationSet Name="FK_USER_HISTORIAL" Association="Self.FK_USER_HISTORIAL">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="Historial" EntitySet="Historial" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

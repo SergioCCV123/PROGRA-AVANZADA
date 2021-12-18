@@ -5,20 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="534a593cc3564b25ac8b8bc527c96c2e" Name="Diagram1" ZoomLevel="97">
-        <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.Carrito" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.Carrito" Width="3.5" PointX="5.25" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.Categoria" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.Compra" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.DetalleCompra" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.Historial" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.Marca" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.Producto" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.Producto" Width="1.875" PointX="3" PointY="3.5" IsExpanded="true" />
         <AssociationConnector Association="db_a7ddbd_pulperiaModel.FK_CARRITO_PRODUCTO" ManuallyRouted="false" />
         <AssociationConnector Association="db_a7ddbd_pulperiaModel.FK_PRODUCTO_CATEGORIA" ManuallyRouted="false" />
-        <AssociationConnector Association="db_a7ddbd_pulperiaModel.FK_DETALLECOMPRA_COMPRA" ManuallyRouted="false" />
-        <AssociationConnector Association="db_a7ddbd_pulperiaModel.FK_HISTORIAL_COMPRA" ManuallyRouted="false" />
-        <AssociationConnector Association="db_a7ddbd_pulperiaModel.FK_DETALLECOMPRA_PRODUCTO" ManuallyRouted="false" />
         <AssociationConnector Association="db_a7ddbd_pulperiaModel.FK_PRODUCTO_MARCA" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.C__MigrationHistory" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.C__MigrationHistory" Width="1.5" PointX="8.875" PointY="0.875" />
         <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="12.375" />
         <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.AspNetUserClaims" Width="1.5" PointX="3" PointY="14.375" />
         <EntityTypeShape EntityType="db_a7ddbd_pulperiaModel.AspNetUserLogins" Width="2.375" PointX="3" PointY="11.875" IsExpanded="true" />
@@ -27,7 +22,6 @@
         <AssociationConnector Association="db_a7ddbd_pulperiaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="db_a7ddbd_pulperiaModel.FK_USER_CARRITO" />
         <AssociationConnector Association="db_a7ddbd_pulperiaModel.FK_USER_COMPRA" />
-        <AssociationConnector Association="db_a7ddbd_pulperiaModel.FK_USER_HISTORIAL" />
         <AssociationConnector Association="db_a7ddbd_pulperiaModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>

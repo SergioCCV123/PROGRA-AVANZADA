@@ -5,11 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="text-center">Marcas</h2>
+@if (User.IsInRole("admin")) { 
+    <div class="text-center justify-content-center">
+        <a href="@Url.Action("Create","Marcas")" class="btn btn success">Crear Nuevo</a>
+    </div>
+}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -24,9 +26,9 @@
             @Html.DisplayFor(modelItem => item.NOMBREMARCA)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDMARCA }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDMARCA }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDMARCA })
+            <a href="@Url.Action("Edit", "Marcas", new { id = item.IDMARCA })"><i class="fas fa-edit"></i>|</a>
+            <a href="@Url.Action("Delete", "Marcas", new { id = item.IDMARCA })"><i class="fas fa-trash-alt"></i>|</a>
+            <a href="@Url.Action("Details", "Marcas", new { id = item.IDMARCA })"><i class="fas fa-info-circle"></i></a>
         </td>
     </tr>
 }

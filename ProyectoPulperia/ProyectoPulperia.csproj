@@ -208,8 +208,6 @@
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\CompraController.cs" />
-    <Compile Include="Controllers\DetalleCompraController.cs" />
-    <Compile Include="Controllers\HistorialController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
@@ -217,14 +215,8 @@
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DetalleCompra.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Historial.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Marca.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -254,6 +246,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\360_F_350683074_SSaXPN4XBvmwEKWRG4aU18Kl7kwkOdrg.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -393,16 +386,6 @@
     <Content Include="Views\Compra\Details.cshtml" />
     <Content Include="Views\Compra\Edit.cshtml" />
     <Content Include="Views\Compra\Index.cshtml" />
-    <Content Include="Views\Historial\Create.cshtml" />
-    <Content Include="Views\Historial\Delete.cshtml" />
-    <Content Include="Views\Historial\Details.cshtml" />
-    <Content Include="Views\Historial\Edit.cshtml" />
-    <Content Include="Views\Historial\Index.cshtml" />
-    <Content Include="Views\DetalleCompra\Create.cshtml" />
-    <Content Include="Views\DetalleCompra\Delete.cshtml" />
-    <Content Include="Views\DetalleCompra\Details.cshtml" />
-    <Content Include="Views\DetalleCompra\Edit.cshtml" />
-    <Content Include="Views\DetalleCompra\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

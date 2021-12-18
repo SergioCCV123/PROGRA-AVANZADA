@@ -52,27 +52,26 @@
                     <li class="nav-item active p-2">
                         <a class="nav-link" href="@Url.Action("Index","Compra")">Compra</a>
                     </li>
-                    <li class="nav-item active p-2">
-                        <a class="nav-link" href="@Url.Action("Index","Historial")">Historial</a>
-                    </li>
-                    <li class="nav-item active p-2">
-                        <a class="nav-link" href="@Url.Action("Index","DetalleCompra")">Detalle de la compra</a>
-                    </li>
                 </ul>
             }
             @Html.Partial("_LoginPartial")
         </div>
     </nav>
-            </div>
-        </div>
-    </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
     </div>
+    <footer>
+        <section class="d-flex justify-content-between p-4" style="background-color:#094067;">
+            <div class="me-5" style="color:white">
+                <span>© 2021 Pulperia el Alto</span>
+            </div>
+        </section>
+    </footer>
     @RenderSection("scripts", required: false)
+    <script>
+        $("#navbarSupportedContent a:not(.dropdown-toggle)").click(function () {
+            $("#navbarSupportedContent").collapse("hide");
+        });
+    </script>
 </body>
 </html>

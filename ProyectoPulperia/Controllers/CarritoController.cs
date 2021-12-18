@@ -19,6 +19,33 @@ namespace ProyectoPulperia.Controllers
         public ActionResult Index()
         {
             var carrito = db.Carrito.Include(c => c.Producto).Include(c => c.AspNetUsers);
+
+            String username = User.Identity.Name;
+            String resultPrice = "";
+            SqlConnection conn = new SqlConnection("Data Source=SQL5108.site4now.net;initial catalog=db_a7ddbd_pulperia;user id=db_a7ddbd_pulperia_admin;password=Pulperia01*;MultipleActiveResultSets=True");
+            try
+            {
+                conn.Open();
+                SqlCommand query = new SqlCommand("SELECT SUM(PRECIOPRODUCTO*CANTIDADCARRITO) AS TOTALPPU FROM Producto INNER JOIN Carrito ON Carrito.IDPRODUCTO = Producto.IDPRODUCTO WHERE USERID = @username; ", conn);
+                query.Parameters.AddWithValue("@username", username);
+                using (SqlDataReader reader = query.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        resultPrice = reader["TOTALPPU"].ToString();
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            ViewBag.Total = resultPrice;
             return View(carrito.ToList());
         }
 
