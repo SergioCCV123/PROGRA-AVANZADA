@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ProyectoPulperia.Producto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+    @if (User.IsInRole("admin")) 
+    { 
+        <p>
+             @Html.ActionLink("Create New", "Create")
+        </p>
+    }
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBREPRODUCTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRECIOPRODUCTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria.NOMBRECATEGORIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marca.NOMBREMARCA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NOMBREPRODUCTO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PRECIOPRODUCTO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Categoria.NOMBRECATEGORIA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Marca.NOMBREMARCA)
+    </td>
+    @if (User.IsInRole("admin"))
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IDPRODUCTO }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IDPRODUCTO }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IDPRODUCTO })
+        </td>
+    }
+    @if (User.IsInRole("cliente"))
+                {
+<td>
+    @Html.ActionLink(linkText: "Agregar", actionName: "Create", controllerName: "Carrito", routeValues: new { id = item.IDPRODUCTO, iduser = User.Identity.Name }, htmlAttributes: null)
+</td>
+                }
+</tr>
+}
+
+</table>

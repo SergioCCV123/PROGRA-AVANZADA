@@ -1,0 +1,51 @@
+﻿@model ProyectoPulperia.DetalleCompra
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetalleCompra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDADDC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDADDC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRECIODC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRECIODC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Compra.USERID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Compra.USERID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.NOMBREPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto.NOMBREPRODUCTO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDDETALLECOMPRA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
