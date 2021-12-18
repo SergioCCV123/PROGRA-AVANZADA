@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_a7ddbd_pulperiaModelStoreContainer" CdmEntityContainer="db_a7ddbd_pulperiaEntities">
+    <EntitySetMapping Name="Carrito">
+      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.Carrito">
+        <MappingFragment StoreEntitySet="Carrito">
+          <ScalarProperty Name="IDCARRITO" ColumnName="IDCARRITO" />
+          <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="CANTIDADCARRITO" ColumnName="CANTIDADCARRITO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="IDCATEGORIA" ColumnName="IDCATEGORIA" />
+          <ScalarProperty Name="NOMBRECATEGORIA" ColumnName="NOMBRECATEGORIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Compra">
+      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.Compra">
+        <MappingFragment StoreEntitySet="Compra">
+          <ScalarProperty Name="IDCOMPRA" ColumnName="IDCOMPRA" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="TOTALCOMPRA" ColumnName="TOTALCOMPRA" />
+          <ScalarProperty Name="FECHACOMPRA" ColumnName="FECHACOMPRA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marca">
+      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.Marca">
+        <MappingFragment StoreEntitySet="Marca">
+          <ScalarProperty Name="IDMARCA" ColumnName="IDMARCA" />
+          <ScalarProperty Name="NOMBREMARCA" ColumnName="NOMBREMARCA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Producto">
+      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.Producto">
+        <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
+          <ScalarProperty Name="NOMBREPRODUCTO" ColumnName="NOMBREPRODUCTO" />
+          <ScalarProperty Name="PRECIOPRODUCTO" ColumnName="PRECIOPRODUCTO" />
+          <ScalarProperty Name="IDCATEGORIAPRODUCTO" ColumnName="IDCATEGORIAPRODUCTO" />
+          <ScalarProperty Name="IDMARCAPRODUCTO" ColumnName="IDMARCAPRODUCTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="db_a7ddbd_pulperiaModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="db_a7ddbd_pulperiaModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="Purchase" FunctionName="db_a7ddbd_pulperiaModel.Store.Purchase" />
+    <FunctionImportMapping FunctionImportName="PurchaseDetails" FunctionName="db_a7ddbd_pulperiaModel.Store.PurchaseDetails" />
+    <FunctionImportMapping FunctionImportName="UserPurchase" FunctionName="db_a7ddbd_pulperiaModel.Store.UserPurchase" />
+  </EntityContainerMapping>
+</Mapping>

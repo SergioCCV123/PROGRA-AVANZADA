@@ -1,0 +1,51 @@
+﻿@model ProyectoPulperia.Producto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBREPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBREPRODUCTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRECIOPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRECIOPRODUCTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.NOMBRECATEGORIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.NOMBRECATEGORIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca.NOMBREMARCA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca.NOMBREMARCA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDPRODUCTO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

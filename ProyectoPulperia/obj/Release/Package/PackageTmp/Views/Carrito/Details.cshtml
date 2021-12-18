@@ -1,0 +1,43 @@
+﻿@model ProyectoPulperia.Carrito
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Carrito</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CANTIDADCARRITO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CANTIDADCARRITO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.NOMBREPRODUCTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto.NOMBREPRODUCTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUsers.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDCARRITO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

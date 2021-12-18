@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProyectoPulperia.Producto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Productos</h2>
+
+@if (User.IsInRole("admin"))
+{
+<div class="container text-center justify-content-center">
+    <a href="@Url.Action("Create", "Product")" class="btn btn-success"> Crear Nuevo Producto</a>
+</div>
+}
+
+<div class="row row-cols-1 row-cols-md-3 p-2" style="padding-top:2em;">
+    @foreach (var item in Model)
+    {
+        <div class="col-4 p-2" style="padding-top:2em;">
+            <div class="card text-center mx-auto text-white" style="width:20rem; background-color:#8fbc8f; border-radius:21px!important">
+                <div class="card-body">
+                    <div class="card-title text-center">
+                        <p>@Html.DisplayFor(modelItem => item.NOMBREPRODUCTO)</p>
+                    </div>
+                    Precio: @Html.DisplayFor(modelItem => item.PRECIOPRODUCTO)
+                    <br />
+                    Categoria: @Html.DisplayFor(modelItem => item.Categoria.NOMBRECATEGORIA)
+                    <br />
+                    Marca: @Html.DisplayFor(modelItem => item.Marca.NOMBREMARCA)
+                    <br />
+                    <a href="@Url.Action("Create","Carrito", new { id = item.IDPRODUCTO , USERID = User.Identity.Name})" class="btn btn-primary p-2">Agregar al carrito</a>
+                    <br />
+                    @if (User.IsInRole("admin"))
+                    {
+                        <a href="@Url.Action("Edit", "Producto", new { id = item.IDPRODUCTO })" class="text-white"><i class="fas fa-edit"></i>|</a>
+                        <a href="@Url.Action("Delete", "Producto", new { id = item.IDPRODUCTO })" class="text-white"><i class="fas fa-trash-alt"></i>|</a>
+                        <a href="@Url.Action("Details", "Producto", new { id = item.IDPRODUCTO })" class="text-white"><i class="fas fa-info-circle"></i></a>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ProyectoPulperia.Marca>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Marcas</h2>
+@if (User.IsInRole("admin")) { 
+    <div class="text-center justify-content-center">
+        <a href="@Url.Action("Create","Marcas")" class="btn btn success">Crear Nuevo</a>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBREMARCA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBREMARCA)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "Marcas", new { id = item.IDMARCA })"><i class="fas fa-edit"></i>|</a>
+            <a href="@Url.Action("Delete", "Marcas", new { id = item.IDMARCA })"><i class="fas fa-trash-alt"></i>|</a>
+            <a href="@Url.Action("Details", "Marcas", new { id = item.IDMARCA })"><i class="fas fa-info-circle"></i></a>
+        </td>
+    </tr>
+}
+
+</table>
